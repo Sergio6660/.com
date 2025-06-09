@@ -1,0 +1,25 @@
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_usuario VARCHAR(50),
+    contrasena VARCHAR(50),
+    rol VARCHAR(20)
+);
+
+CREATE TABLE mascotas (
+    id_mascota INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    tipo VARCHAR(50),
+    raza VARCHAR(50),
+    edad INT,
+    id_usuario INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+CREATE TABLE citas (
+    id_cita INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE,
+    motivo VARCHAR(100),
+    id_mascota INT,
+    id_veterinario INT,
+    FOREIGN KEY (id_mascota) REFERENCES mascotas(id_mascota)
+);
